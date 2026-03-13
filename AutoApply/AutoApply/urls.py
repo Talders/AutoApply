@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
-from accounts.views import home
+from accounts.views import home, register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +29,5 @@ urlpatterns = [
             redirect_authenticated_user=True
         ), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
+    path('register/', register, name='register'),
 ]
