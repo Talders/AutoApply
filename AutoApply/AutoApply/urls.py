@@ -22,6 +22,11 @@ from accounts.views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('login/', LoginView.as_view(template_name='login.html'), name='login'),
+    path(
+        'login/', 
+        LoginView.as_view(
+            template_name='login.html',
+            redirect_authenticated_user=True
+        ), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
 ]
