@@ -118,6 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
-LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = "home"
-LOGOUT_REDIRECT_URL = "login"
+LOGIN_URL = "login" #Wenn nicht eingeloggt, auf Login Seite weiterleiten
+LOGIN_REDIRECT_URL = "home" #Nach Login auf Home weiterleiten
+LOGOUT_REDIRECT_URL = "login" #Nach Logout auf Login weiterleiten
+AUTH_USER_MODEL = 'accounts.CustomUser' #Eigenes User Model verwenden
