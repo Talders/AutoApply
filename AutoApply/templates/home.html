@@ -1,18 +1,51 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<h1>Home</h1>
+{% block title %}
+Dashboard
+{% endblock %}
 
-<p>Du bist eingeloggt als: {{ user.username }}</p>
+{% block content %}
 
-<form method="post" action="/logout/">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
-</form>
+<div class="card">
+    <h1>Dashboard</h1>
+    <p>Willkommen, <strong>{{ user.username }}</strong></p>
+</div>
 
-</body>
-</html>
+<div class="grid">
+
+    <div class="card">
+        <h2>Mail Tracker</h2>
+        <p>Hier werden später versendete und empfangene Mails angezeigt.</p>
+        <button class="button button-disabled" disabled>Tracker öffnen</button>
+    </div>
+
+    <div class="card">
+        <h2>PDF Bewerbung einfügen</h2>
+        <p>
+            Hier kannst du später eine Bewerbungs-PDF einfügen, folgende Daten
+            bitte so einpflegen damit diese später umgesetzt werden:
+        </p>
+
+        <ul>
+            <li>&lt;Date&gt; für das Datum</li>
+            <li>&lt;Company&gt; für die Firma</li>
+            <li>&lt;Street&gt; für die Straße und Hausnummer</li>
+            <li>&lt;Postal_Code&gt; für die Postleitzahl</li>
+            <li>&lt;City&gt; für die Stadt</li>
+            <li>&lt;Contact_Name&gt; für den Namen der Person (wenn vorhanden)</li>
+            <li>&lt;Contact_Email&gt; für die Mail-Adresse (wenn vorhanden)</li>
+        </ul>
+
+        <a href="/pdf/" class="button">PDF erstellen</a>
+    </div>
+
+</div>
+
+<div class="logout">
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="button">Logout</button>
+    </form>
+</div>
+
+{% endblock %}
